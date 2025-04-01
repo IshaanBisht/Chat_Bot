@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="first-page">
+
+    <div class="login-box">
+        <form action="/login" method="post">
+
+            <h1>Login</h1>
+            <div class="input-login-box">
+                <input type="email" name="email" id="email" placeholder="Email" required autocomplete="email"> 
+                <label for="email">Email</label>
+                <img src="image/bxs-user.svg" alt="">   
+            </div> 
+            
+            <div class="input-login-box">
+                <input type="password" placeholder="password" id="password" required>
+                <label for="password">Password</label>    
+                <img src="image/bxs-lock.svg" id="closedlock">
+            </div>
+
+            <div class="login-forget">
+                <!-- <label><input type="checkbox">Remember Me</label> -->
+                <a href="#">Forgot Password !!!</a>
+            </div>
+
+            <button type="submit" class="btn">
+                Login
+            </button>
+
+            <div class="register-link">
+             <p>Dont have an account ? 
+                <a id="signupbutton" href="/register">Register !!</a>
+            </p>
+            </div>
+ 
+        </form>
+ 
+    </div>
+    <script src="script.js"></script>
+
+</body>
