@@ -27,23 +27,32 @@ app.get("/register", (req, res) => res.render("register"));
 // Login user 
 app.post("/login", async (req, res) => {
     try {
-        const check = await collection.findOne({ name: req.body.username });
-        if (!check) {
-            res.send("User name cannot found")
+        const { email, password } = req.body;
+
+        // Check if email exists in the database
+        const user = await collection.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ error: "Email not found" });
         }
-        // Compare the hashed password from the database with the plaintext password
-        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+
+        // Compare entered password with stored hashed password
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+
         if (!isPasswordMatch) {
-            res.send("wrong Password");
+            return res.status(400).json({ error: "Wrong password" });
         }
-        else {
-            res.render("home");
-        }
-    }
-    catch {
-        res.send("wrong Details");
+
+        console.log("✅ Login successful:", user.email);
+
+        res.redirect("/home"); // Redirect to home page after successful login
+    } catch (error) {
+        console.error("❌ Login Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
+
 
 
 // Register User
