@@ -96,9 +96,14 @@ app.post("/register", async (req, res) => {
     }
 });
 
+// Default route (Home) - Redirects to Login page
+app.get("/", (req, res) => {
+    res.render("login"); // This will load login.ejs by default
+});
+
+
 // Start the server
 const port = 7000;
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 });
-
