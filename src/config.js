@@ -3,10 +3,7 @@ const mongoose = require("mongoose");
 // Async function to connect to MongoDB
 async function connectDB() {
     try {
-        await mongoose.connect("mongodb://localhost:27017/Login-tut", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect("mongodb://localhost:27017/Login-tut",);
         console.log("✅ Database Connected Successfully");
     } catch (error) {
         console.error("❌ Database Connection Failed:", error);
